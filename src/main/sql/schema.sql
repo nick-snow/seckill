@@ -27,8 +27,8 @@ values
 	
 create table success_killed(
 `seckill_id` bigint NOT NULL COMMENT '秒殺商品id',
-`user_phone` bigint NOT NULL COMMENT '用戶手機號'，
-`state` tinyint NOT NULL DEFAULT -1 COMMENT '狀態標示:-1:無效  0:成功  1:已付款 2:已發貨',
+`user_phone` bigint NOT NULL COMMENT '用戶手機號',
+`state` int NOT NULL DEFAULT -1 COMMENT '狀態標示:-1,無效:0,成功  1,已付款 2:已發貨',
 `create_time` timestamp NOT NULL COMMENT '創建時間',
 PRIMARY KEY(seckill_id,user_phone),/*聯合主鍵*/
 key idx_create_time(create_time)

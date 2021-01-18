@@ -1,13 +1,9 @@
 package org.seckill.dao;
 
 import java.io.*;
+import java.util.List;
 
 import javax.annotation.Resource;
-
-import org.apache.pdfbox.io.RandomAccessRead;
-import org.apache.pdfbox.pdfparser.PDFParser;
-import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.util.*;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.seckill.entity.Seckill;
@@ -30,10 +26,12 @@ public class SeckillDaoTest {
 		@Test
 		//減庫存
 		public void reduceNumber() throws Exception {
-//			long id = 1000;
-//			Seckill seckill = seckillDao.queryById(id);
-//			System.out.println(seckill.getName());
-//			System.out.println(seckill);
+			long id = 1000;
+			Seckill seckill = seckillDao.queryById(id);
+			System.out.println(seckill.getName());
+			System.out.println(seckill);
+			seckillDao.reduceNumber(1000);
+			System.out.println(seckill.getNumber());
 		}
 		
 		@Test
@@ -44,9 +42,12 @@ public class SeckillDaoTest {
 		
 		@Test
 		//根據偏移量查詢秒殺商品列表
+		//java没有保存形参的记录
 		public void queryAll() throws Exception{
-			PDDocument document = PDDocument.load(new File("C:\\443.pdf"));
-			System.out.print("1");
+			List<Seckill> seckills = seckillDao.queryAll(0, 100);
+			for(Seckill seckill : seckills) {
+				System.out.println(seckill);
+			}
 		}
 		
 

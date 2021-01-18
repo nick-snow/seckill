@@ -2,6 +2,7 @@ package org.seckill.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.seckill.entity.Seckill;
 
 public interface SeckillDao {
@@ -13,5 +14,5 @@ public interface SeckillDao {
 	Seckill queryById(long seckillId);
 	
 	//根據偏移量查詢秒殺商品列表
-	List<Seckill> queryAll(int offet, int limit);
+	List<Seckill> queryAll(@Param("offet")int offet,@Param("limit") int limit);
 }
